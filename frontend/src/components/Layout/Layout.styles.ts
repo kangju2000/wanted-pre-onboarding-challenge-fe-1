@@ -6,9 +6,15 @@ export const Layout = styled.div`
   background-color: ${({ theme }) => theme.colors.gray};
 `;
 
-export const Content = styled.div`
+export const Container = styled.div`
   max-width: 448px;
   height: 100%;
   margin: 0 auto;
   background-color: ${({ theme }) => theme.colors.lightgray};
+`;
+
+export const Content = styled.div`
+  height: 100%;
+  padding: 20px;
+  padding-top: 70px;
 `;

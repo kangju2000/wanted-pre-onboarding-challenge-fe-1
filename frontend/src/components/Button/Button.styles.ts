@@ -27,11 +27,12 @@ const colorCSS = {
   `,
 };
 
-interface IButton extends Pick<ButtonProps, 'size' | 'color'> {}
+interface IButton extends Pick<ButtonProps, 'size' | 'color' | 'fullWidth'> {}
 
 export const Button = styled.button<IButton>`
   ${({ size = 'medium' }) => sizeCSS[size]};
   ${({ theme, color = 'primary' }) => colorCSS[color](theme)}
+  ${({ fullWidth }) => fullWidth && 'width: 100%;'};
   border: none;
   border-radius: 5px;
   text-align: center;
