@@ -7,7 +7,7 @@ function Home() {
   const navigate = useNavigate();
 
   const onLoginClick = () => {
-    navigate(ROUTES.AUTH);
+    navigate(ROUTES.LOGIN);
   };
 
   return (

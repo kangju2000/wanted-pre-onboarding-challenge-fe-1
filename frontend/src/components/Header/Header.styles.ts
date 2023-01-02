@@ -10,3 +10,7 @@ export const Header = styled.header`
   padding: 0 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
 `;
+
+export const Title = styled.h1`
+  cursor: pointer;
+`;
