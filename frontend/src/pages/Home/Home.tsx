@@ -1,13 +1,13 @@
-import * as S from './Home.styles';
-import Button from '@/components/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import Button from '@/components/Button/Button';
 import ROUTES from '@/constants/routes';
+import * as S from './Home.styles';
 
 function Home() {
   const navigate = useNavigate();
 
   const onLoginClick = () => {
-    navigate(ROUTES.LOGIN);
+    navigate(ROUTES.AUTH);
   };
 
   return (

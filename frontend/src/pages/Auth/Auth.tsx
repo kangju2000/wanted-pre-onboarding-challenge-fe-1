@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '@/components/Input/Input';
 import REGEX from '@/constants/regex';
-import * as S from './Login.styles';
+import * as S from './Auth.styles';
 
 function Login() {
+  const [auth, setAuth] = useState<'login' | 'signup'>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValid, setIsValid] = useState({
@@ -44,10 +45,10 @@ function Login() {
   };
 
   return (
-    <S.Login>
-      <S.LoginContainer>
-        <S.LoginForm onSubmit={onLoginClick}>
-          <S.LoginTitle>로그인</S.LoginTitle>
+    <S.Auth>
+      <S.AuthContainer>
+        <S.AuthForm onSubmit={auth === 'login' ? onLoginClick : onSignUpClick}>
+          <S.AuthTitle>{auth === 'login' ? '로그인' : '회원가입'}</S.AuthTitle>
           <Input
             type="text"
             name="email"
@@ -63,14 +64,17 @@ function Login() {
             onChange={handlePasswordChange}
           />
           <Button type="submit" fullWidth={true} disabled={!(isValid.email && isValid.password)}>
-            로그인
+            {auth === 'login' ? '로그인' : '회원가입'}
           </Button>
-        </S.LoginForm>
-        <Button fullWidth={true} onClick={onSignUpClick}>
-          회원가입
+        </S.AuthForm>
+        <Button
+          fullWidth={true}
+          onClick={() => setAuth((prev) => (prev === 'login' ? 'signup' : 'login'))}
+        >
+          {auth === 'login' ? '회원가입하기' : '로그인하기'}
         </Button>
-      </S.LoginContainer>
-    </S.Login>
+      </S.AuthContainer>
+    </S.Auth>
   );
 }
 

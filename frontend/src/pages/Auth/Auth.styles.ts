@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Login = styled.div`
+export const Auth = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,16 +10,16 @@ export const Login = styled.div`
   text-align: center;
 `;
 
-export const LoginContainer = styled.div`
+export const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   width: 200px;
 `;
 
-export const LoginTitle = styled.h1`
+export const AuthTitle = styled.h1`
   margin-bottom: 20px;
   font-size: 20px;
 `;
 
-export const LoginForm = styled.form``;
+export const AuthForm = styled.form``;
