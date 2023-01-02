@@ -1,6 +1,6 @@
-import api from './';
 import API_PATH from '@/constants/path';
 import { TodoType } from '@/types/todos';
+import api from './';
 
 export const getTodos = () => api.get(API_PATH.TODOS);
 

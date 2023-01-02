@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
+import styled from '@emotion/styled';
 import { ButtonProps } from './Button';
 
 const sizeCSS = {
@@ -27,9 +27,7 @@ const colorCSS = {
   `,
 };
 
-interface IButton extends Pick<ButtonProps, 'size' | 'color' | 'fullWidth'> {}
-
-export const Button = styled.button<IButton>`
+export const Button = styled.button<Pick<ButtonProps, 'size' | 'color' | 'fullWidth'>>`
   ${({ size = 'medium' }) => sizeCSS[size]};
   ${({ theme, color = 'primary' }) => colorCSS[color](theme)}
   ${({ fullWidth }) => fullWidth && 'width: 100%;'};

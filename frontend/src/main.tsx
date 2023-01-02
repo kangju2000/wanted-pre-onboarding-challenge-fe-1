@@ -1,6 +1,6 @@
+import { ThemeProvider } from '@emotion/react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ThemeProvider } from '@emotion/react';
 import App from '@/App';
 import GlobalStyle from '@/styles/GlobalStyles';
 import theme from '@/styles/theme';

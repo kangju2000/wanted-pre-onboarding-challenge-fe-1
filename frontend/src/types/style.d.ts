@@ -1,4 +1,3 @@
-import theme from '@/style/theme';
 import '@emotion/react';
 
 interface ColorsType {
