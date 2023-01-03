@@ -1,8 +1,8 @@
-import { Button } from '@/components/Button/Button.styles';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/Button/Button.styles';
 import Input from '@/components/Input/Input';
 import REGEX from '@/constants/regex';
+import { useLogin, useSignUp } from '@/hooks/queries/auth';
 import * as S from './Auth.styles';
 
 function Login() {
@@ -14,14 +14,19 @@ function Login() {
     password: false,
   });
 
-  const navigate = useNavigate();
+  const { mutate: LoginMutate } = useLogin();
+  const { mutate: SignUpMutate } = useSignUp();
 
   const onLoginClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    LoginMutate({ email, password });
   };
 
-  const onSignUpClick = () => {
-    navigate('/signup');
+  const onSignUpClick = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    SignUpMutate({ email, password });
   };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +34,7 @@ function Login() {
     setIsValid((prev) => {
       return {
         ...prev,
-        email: REGEX.email.test(event.target.value),
+        email: REGEX.EMAIL.test(event.target.value),
       };
     });
   };
@@ -39,7 +44,7 @@ function Login() {
     setIsValid((prev) => {
       return {
         ...prev,
-        password: REGEX.password.test(event.target.value),
+        password: REGEX.PASSWORD.test(event.target.value),
       };
     });
   };

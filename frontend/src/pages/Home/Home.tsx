@@ -6,15 +6,15 @@ import * as S from './Home.styles';
 function Home() {
   const navigate = useNavigate();
 
-  const onLoginClick = () => {
-    navigate(ROUTES.AUTH);
+  const onTodoClick = () => {
+    navigate(ROUTES.TODOS);
   };
 
   return (
     <S.Home>
       <S.Title>Todo App</S.Title>
-      <Button size="large" onClick={onLoginClick}>
-        로그인
+      <Button size="large" onClick={onTodoClick}>
+        시작하기
       </Button>
     </S.Home>
   );
