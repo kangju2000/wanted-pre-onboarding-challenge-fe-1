@@ -4,6 +4,8 @@ import Layout from '@/components/Layout/Layout';
 import ROUTES from '@/constants/routes';
 import Auth from '@/pages/Auth/Auth';
 import Home from '@/pages/Home/Home';
+import Todos from '@/pages/Todos/Todos';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (
@@ -12,6 +14,9 @@ function App() {
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.AUTH} element={<Auth />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path={ROUTES.TODOS} element={<Todos />} />
+          </Route>
         </Routes>
       </Layout>
     </Router>
