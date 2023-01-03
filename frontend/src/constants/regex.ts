@@ -1,6 +1,6 @@
 const REGEX = {
-  email: /(?=.*@)(?=.*\.)/,
-  password: /.{8,}/,
+  EMAIL: /(?=.*@)(?=.*\.)/,
+  PASSWORD: /.{8,}/,
 };
 
 export default REGEX;

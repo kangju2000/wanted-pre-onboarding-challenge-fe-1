@@ -1,6 +1,6 @@
 const API_PATH = {
-  LOGIN: '/user/login',
-  SIGNUP: '/user/create',
+  LOGIN: '/users/login',
+  SIGNUP: '/users/create',
   TODOS: '/todos',
   TODO_BY_ID: (id: number) => `/todos/${id}`,
   CREATE_TODO: '/todos',
