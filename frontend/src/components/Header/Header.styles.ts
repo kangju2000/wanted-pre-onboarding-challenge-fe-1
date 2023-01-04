@@ -9,6 +9,7 @@ export const Header = styled.header`
   height: 50px;
   padding: 0 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+  background-color: inherit;
 `;
 
 export const Title = styled.h1`
