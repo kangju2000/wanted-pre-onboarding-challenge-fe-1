@@ -1,11 +1,12 @@
-import { Low, JSONFile } from "lowdb";
-import fs from "fs/promises";
-import { join } from "path";
-import { nanoid } from "nanoid";
-import path from "path";
+import { Low, JSONFile } from 'lowdb';
+import fs from 'fs/promises';
+import { join } from 'path';
+import { nanoid } from 'nanoid';
+import path from 'path';
 
-import type { Todo } from "../types/todos";
-import type { User } from "../types/users";
+import type { Todo } from '../types/todos';
+import type { User } from '../types/users';
+import getTimestamp from './../utils/getTimestamp';
 
 const __dirname = path.resolve();
 
@@ -18,8 +19,8 @@ export let db: Low<Data>;
 
 export const initDatabase = async () => {
   // Use JSON file for storage
-  const dbFolderPath = join(__dirname, "./db");
-  const filePath = join(__dirname, "./db/db.json");
+  const dbFolderPath = join(__dirname, './db');
+  const filePath = join(__dirname, './db/db.json');
   const dbFolder = await fs.readdir(dbFolderPath).catch(() => void 0);
   const file = await fs.readFile(filePath).catch(() => void 0);
 
@@ -50,7 +51,7 @@ export const createConnection = async () => {
 export const getConnection = () => db;
 
 export const create = <T>(content: any): T => {
-  const timestamp = new Date().toISOString();
+  const timestamp = getTimestamp();
   return {
     ...content,
     id: nanoid(),
@@ -60,7 +61,7 @@ export const create = <T>(content: any): T => {
 };
 
 export const update = <T>(content: any): T => {
-  const timestamp = new Date().toISOString();
+  const timestamp = getTimestamp();
   return {
     ...content,
     updatedAt: timestamp,
