@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
+import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
 import ROUTES from '@/constants/routes';
 import Auth from '@/pages/Auth/Auth';
 import Home from '@/pages/Home/Home';
 import Todos from '@/pages/Todos/Todos';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (

@@ -28,6 +28,7 @@ function Todos() {
     setTitle('');
     setContent('');
     setIsAdding(false);
+    setIsUpdating(false);
   };
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
