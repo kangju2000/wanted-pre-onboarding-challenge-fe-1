@@ -39,14 +39,6 @@ export const CreatedAt = styled.span`
   margin-right: 10px;
 `;
 
-export const TodoSetting = styled.div`
-  display: flex;
-  span {
-    cursor: pointer;
-    margin-right: 5px;
-  }
-`;
-
 export const Title = styled.h1`
   font-size: 20px;
   font-weight: 700;

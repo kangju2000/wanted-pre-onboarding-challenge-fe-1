@@ -8,6 +8,9 @@ const global = css`
   *::before {
     margin: 0;
     box-sizing: border-box;
+    outline: none;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+      Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
   html,
   body {

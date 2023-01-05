@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const TodoBox = styled.div`
   display: flex;
   align-items: flex-start;
+  column-gap: 10px;
   min-height: 60px;
   margin-bottom: 15px;
   padding: 20px;
@@ -12,7 +13,6 @@ export const TodoBox = styled.div`
   cursor: pointer;
   svg {
     min-width: 24px;
-    margin-right: 10px;
     cursor: pointer;
     :hover {
       transform: scale(1.1);

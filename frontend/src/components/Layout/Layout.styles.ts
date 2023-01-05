@@ -15,6 +15,5 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   height: 100%;
-  padding: 20px;
-  padding-top: 70px;
+  padding: 70px 20px 0px;
 `;

@@ -15,10 +15,6 @@ const TodoModal = ({ todo, isOpen, closeModal }: TodoModalProps) => {
         <CloseIcon onClick={closeModal} />
         <S.ModalHeader>
           <S.CreatedAt>{new Date(todo.createdAt).toLocaleDateString()}</S.CreatedAt>
-          <S.TodoSetting>
-            <span>수정</span>
-            <span>삭제</span>
-          </S.TodoSetting>
         </S.ModalHeader>
         <S.Title>{todo.title}</S.Title>
         <S.Content>{todo.content}</S.Content>
