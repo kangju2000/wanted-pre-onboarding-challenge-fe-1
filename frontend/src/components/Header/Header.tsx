@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '@/components/Common/Button/Button';
 import ROUTES from '@/constants/routes';
+import useSnackBar from '@/hooks/useSnackBar';
 import { getToken, setToken } from '@/utils/storage';
 import * as S from './Header.styles';
 
 const Header = () => {
   const navigate = useNavigate();
+  const { showSnackBar } = useSnackBar();
   const isLogin = !!getToken();
 
   const onTitleClick = () => {
@@ -15,7 +17,7 @@ const Header = () => {
   const onAuthClick = () => {
     if (isLogin) {
       setToken('');
-      alert('로그아웃 되었습니다.');
+      showSnackBar('로그아웃 되었습니다.');
       navigate(ROUTES.HOME);
       return;
     }

@@ -1,8 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { deleteTodo, getTodos, postCreateToDo, putUpdateToDo } from '@/api/todos';
+import { MUTATION_KEYS, QUERY_KEYS } from '@/constants/queries';
 
 export const useGetTodos = () => {
-  const { data } = useQuery('todos', getTodos, {});
+  const { data } = useQuery(QUERY_KEYS.TODOS, getTodos, {});
 
   return { data };
 };
@@ -12,9 +13,9 @@ export const useCreateTodo = () => {
   const { mutate } = useMutation(postCreateToDo, {
     retry: 0,
     onSuccess: () => {
-      queryClient.invalidateQueries('todos');
+      queryClient.invalidateQueries(QUERY_KEYS.TODOS);
     },
-    onError: () => alert('할 일을 추가할 수 없습니다.'),
+    mutationKey: MUTATION_KEYS.CREATE_TODO,
   });
 
   return { mutate };
@@ -25,9 +26,9 @@ export const useDeleteTodo = () => {
   const { mutate } = useMutation(deleteTodo, {
     retry: 0,
     onSuccess: () => {
-      queryClient.invalidateQueries('todos');
+      queryClient.invalidateQueries(QUERY_KEYS.TODOS);
     },
-    onError: () => alert('할 일을 삭제할 수 없습니다.'),
+    mutationKey: MUTATION_KEYS.DELETE_TODO,
   });
 
   return { mutate };
@@ -38,9 +39,9 @@ export const useUpdateTodo = () => {
   const { mutate } = useMutation(putUpdateToDo, {
     retry: 0,
     onSuccess: () => {
-      queryClient.invalidateQueries('todos');
+      queryClient.invalidateQueries(QUERY_KEYS.TODOS);
     },
-    onError: () => alert('할 일을 수정할 수 없습니다.'),
+    mutationKey: MUTATION_KEYS.UPDATE_TODO,
   });
 
   return { mutate };

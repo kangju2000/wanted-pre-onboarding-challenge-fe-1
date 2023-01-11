@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { postLogin, postSignUp } from '@/api/auth';
+import { QUERY_KEYS, MUTATION_KEYS } from '@/constants/queries';
 import ROUTES from '@/constants/routes';
 import { setToken } from '@/utils/storage';
 
@@ -13,9 +14,9 @@ export const useLogin = () => {
     onSuccess: ({ token }) => {
       setToken(token);
       navigate(ROUTES.TODOS);
-      queryClient.invalidateQueries('todos');
+      queryClient.invalidateQueries(QUERY_KEYS.TODOS);
     },
-    onError: () => alert('로그인에 실패했습니다.'),
+    mutationKey: MUTATION_KEYS.LOGIN,
   });
 
   return { mutate };
@@ -29,7 +30,7 @@ export const useSignUp = () => {
     onSuccess: () => {
       navigate(ROUTES.HOME);
     },
-    onError: () => alert('회원가입에 실패했습니다.'),
+    mutationKey: MUTATION_KEYS.SIGNUP,
   });
 
   return { mutate };
