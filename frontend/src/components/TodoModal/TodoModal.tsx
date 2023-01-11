@@ -6,20 +6,22 @@ import * as S from './TodoModal.styles';
 export interface TodoModalProps {
   todo: TodoType;
   isOpen: boolean;
-  onClick: () => void;
+  handleClose: () => void;
 }
 
-const TodoModal = ({ todo, isOpen, onClick }: TodoModalProps) => {
+const TodoModal = ({ todo, isOpen, handleClose }: TodoModalProps) => {
   return (
-    <Modal isOpen={isOpen} onClick={onClick}>
-      <S.IconContainer>
-        <CloseIcon onClick={onClick} />
-      </S.IconContainer>
-      <S.ModalHeader>
-        <S.CreatedAt>{new Date(todo.createdAt).toLocaleDateString()}</S.CreatedAt>
-      </S.ModalHeader>
-      <S.Title>{todo.title}</S.Title>
-      <S.Content>{todo.content}</S.Content>
+    <Modal isOpen={isOpen} handleClose={handleClose}>
+      <S.ModalContainer>
+        <S.IconContainer>
+          <CloseIcon onClick={handleClose} />
+        </S.IconContainer>
+        <S.ModalHeader>
+          <S.CreatedAt>{new Date(todo.createdAt).toLocaleDateString()}</S.CreatedAt>
+        </S.ModalHeader>
+        <S.Title>{todo.title}</S.Title>
+        <S.Content>{todo.content}</S.Content>
+      </S.ModalContainer>
     </Modal>
   );
 };

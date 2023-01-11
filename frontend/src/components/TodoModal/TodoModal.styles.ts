@@ -1,5 +1,18 @@
 import styled from '@emotion/styled';
 
+export const ModalContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 448px;
+  height: 300px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: ${({ theme }) => theme.colors.white};
+  z-index: 101;
+`;
+
 export const IconContainer = styled.span`
   svg {
     position: absolute;
