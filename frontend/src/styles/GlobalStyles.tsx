@@ -16,7 +16,7 @@ const global = css`
   body {
     height: 100%;
   }
-  body > div {
+  body > div[id='root'] {
     height: 100%;
   }
 `;
