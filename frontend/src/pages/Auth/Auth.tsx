@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button } from '@/components/Button/Button.styles';
-import Input from '@/components/Input/Input';
+import Button from '@/components/Common/Button/Button';
+import Input from '@/components/Common/Input/Input';
 import REGEX from '@/constants/regex';
 import { useLogin, useSignUp } from '@/hooks/queries/auth';
 import * as S from './Auth.styles';

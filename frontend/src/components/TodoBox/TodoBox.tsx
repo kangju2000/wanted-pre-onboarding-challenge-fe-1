@@ -33,7 +33,7 @@ const TodoBox = ({ todo, onTodoUpdateClick }: TodoBoxProps) => {
 
   return (
     <>
-      <TodoModal isOpen={isModalOpen} closeModal={toggleModal} todo={todo} />
+      <TodoModal isOpen={isModalOpen} onClick={toggleModal} todo={todo} />
       <S.TodoBox onClick={toggleModal}>
         <CheckIcon onClick={() => onTodoClick(todo)} />
         <S.TodoTitle>{todo.title}</S.TodoTitle>

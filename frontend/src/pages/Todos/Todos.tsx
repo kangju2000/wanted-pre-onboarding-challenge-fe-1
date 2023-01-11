@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ReactComponent as PlusIcon } from '@/assets/plus.svg';
-import Button from '@/components/Button/Button';
-import Input from '@/components/Input/Input';
+import Button from '@/components/Common/Button/Button';
+import Input from '@/components/Common/Input/Input';
 import TodoBox from '@/components/TodoBox/TodoBox';
 import { useCreateTodo, useGetTodos, useUpdateTodo } from '@/hooks/queries/todos';
 import { TodoType } from '@/types/todos';
