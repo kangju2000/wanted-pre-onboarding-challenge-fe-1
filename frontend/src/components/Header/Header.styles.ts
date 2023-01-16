@@ -11,6 +11,9 @@ export const Header = styled.header`
   padding: 0 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
   background-color: inherit;
+  button {
+    min-width: 80px;
+  }
 `;
 
 export const Title = styled.h1`

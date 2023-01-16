@@ -6,7 +6,7 @@ export const TodoFormTitle = styled.h1`
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.lightgray};
 `;
 
 export const TodoFormTextarea = styled.textarea`

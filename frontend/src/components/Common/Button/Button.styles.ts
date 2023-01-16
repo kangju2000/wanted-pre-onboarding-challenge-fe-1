@@ -4,7 +4,7 @@ import { ButtonProps } from './Button';
 
 const sizeCSS = {
   small: css`
-    padding: 5px 10px;
+    padding: 7px 10px;
     font-size: 12px;
   `,
   medium: css`
