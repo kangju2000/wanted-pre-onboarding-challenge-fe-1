@@ -15,7 +15,7 @@ export const TodoList = styled.div`
   }
 `;
 
-export const TodoAddButton = styled.div<{ isAdding: boolean }>`
+export const CreateTodoButton = styled.div<{ isCreateFormOpen: boolean }>`
   position: absolute;
   display: flex;
   bottom: 10px;
@@ -44,16 +44,16 @@ export const TodoAddButton = styled.div<{ isAdding: boolean }>`
     }
   }
   transition: all 0.4s ease-in-out;
-  ${({ isAdding }) =>
-    isAdding &&
+  ${({ isCreateFormOpen }) =>
+    isCreateFormOpen &&
     css`
       transform: translate(-50%, -50%) rotate(45deg);
     `}
 `;
 
-export const TodoForm = styled.form<{ isOpen: boolean }>`
+export const TodoFormContainer = styled.div<{ isTodoFormOpen: boolean }>`
   position: absolute;
-  bottom: ${({ isOpen }) => (isOpen ? '100px' : '-270px')};
+  bottom: ${({ isTodoFormOpen }) => (isTodoFormOpen ? '100px' : '-270px')};
   text-align: center;
   padding: 20px;
   background-color: ${({ theme }) => theme.colors.gray};
@@ -66,22 +66,4 @@ export const TodoForm = styled.form<{ isOpen: boolean }>`
   button {
     margin-right: 10px;
   }
-`;
-
-export const TodoFormTitle = styled.h1`
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-export const TodoFormTextarea = styled.textarea`
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.lightgray};
-  border-radius: 8px;
-  margin-bottom: 10px;
-  font-family: inherit;
-  resize: none;
 `;

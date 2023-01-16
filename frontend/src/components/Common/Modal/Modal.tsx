@@ -11,7 +11,6 @@ const Modal = ({ isOpen, handleClose, children }: ModalProps) => {
   const modalElement = document.getElementById('modal');
 
   const onCloseClick = (e: React.MouseEvent) => {
-    console.log(e.target, e.currentTarget);
     if (e.target !== e.currentTarget) {
       return;
     }

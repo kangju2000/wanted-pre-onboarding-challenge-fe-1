@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { ReactComponent as CheckIcon } from '@/assets/check.svg';
+import { ReactComponent as DeleteIcon } from '@/assets/delete.svg';
 import { ReactComponent as UpdateIcon } from '@/assets/pen.svg';
-import { ReactComponent as RemoveIcon } from '@/assets/remove.svg';
 import TodoModal from '@/components/TodoModal/TodoModal';
 import { useUpdateTodo } from '@/hooks/queries/todos';
+import { useDeleteTodo } from '@/hooks/queries/todos';
 import { TodoType } from '@/types/todos';
-import { useDeleteTodo } from './../../hooks/queries/todos';
 import * as S from './TodoBox.styles';
 
 export interface TodoBoxProps {
   todo: TodoType;
-  onTodoUpdateClick: (event: React.MouseEvent<SVGSVGElement>) => void;
+  onUpdateTodoClick: (id: string) => void;
 }
 
-const TodoBox = ({ todo, onTodoUpdateClick }: TodoBoxProps) => {
+const TodoBox = ({ todo, onUpdateTodoClick }: TodoBoxProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { mutate: UpdateTodoMutate } = useUpdateTodo();
   const { mutate: DeleteTodoMutate } = useDeleteTodo();
@@ -26,9 +26,16 @@ const TodoBox = ({ todo, onTodoUpdateClick }: TodoBoxProps) => {
     UpdateTodoMutate({ id, title, content });
   };
 
-  const onTodoRemoveClick = (event: React.MouseEvent<SVGSVGElement>) => {
+  const handleUpdateTodoClick = (event: React.MouseEvent<SVGSVGElement>) => {
     event.stopPropagation();
-    DeleteTodoMutate(todo.id);
+
+    onUpdateTodoClick(todo.id);
+  };
+
+  const handleDeleteTodoClick = (event: React.MouseEvent<SVGSVGElement>) => {
+    event.stopPropagation();
+
+    confirm('정말 삭제하시겠습니까?') && DeleteTodoMutate(todo.id);
   };
 
   return (
@@ -37,8 +44,8 @@ const TodoBox = ({ todo, onTodoUpdateClick }: TodoBoxProps) => {
       <S.TodoBox onClick={toggleModal}>
         <CheckIcon onClick={() => onTodoClick(todo)} />
         <S.TodoTitle>{todo.title}</S.TodoTitle>
-        <UpdateIcon onClick={onTodoUpdateClick} />
-        <RemoveIcon onClick={onTodoRemoveClick} />
+        <UpdateIcon onClick={handleUpdateTodoClick} />
+        <DeleteIcon onClick={handleDeleteTodoClick} />
       </S.TodoBox>
     </>
   );

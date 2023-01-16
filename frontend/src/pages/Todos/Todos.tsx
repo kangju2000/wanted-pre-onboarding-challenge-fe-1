@@ -1,96 +1,67 @@
 import { useState } from 'react';
 import { ReactComponent as PlusIcon } from '@/assets/plus.svg';
-import Button from '@/components/Common/Button/Button';
-import Input from '@/components/Common/Input/Input';
 import TodoBox from '@/components/TodoBox/TodoBox';
+import TodoForm from '@/components/TodoForm/TodoForm';
 import { useCreateTodo, useGetTodos, useUpdateTodo } from '@/hooks/queries/todos';
+import { TodoFormType } from '@/types/todos';
 import { TodoType } from '@/types/todos';
 import * as S from './Todos.styles';
 
 function Todos() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [isAdding, setIsAdding] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [updateTodoId, setUpdateTodoId] = useState<string>('');
+  const [isTodoFormOpen, setTodoFormOpen] = useState(false);
+  const [todoFormType, setTodoFormType] = useState<'create' | 'update'>('create');
+  const [updateTodoId, setUpdateTodoId] = useState('');
 
   const { data: todos } = useGetTodos();
   const { mutate: CreateTodoMutate } = useCreateTodo();
   const { mutate: UpdateTodoMutate } = useUpdateTodo();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    isUpdating
-      ? UpdateTodoMutate({ id: updateTodoId, title, content })
-      : CreateTodoMutate({ title, content });
-
-    setTitle('');
-    setContent('');
-    setIsAdding(false);
-    setIsUpdating(false);
+  const handleCreateTodoClick = () => {
+    setTodoFormType('create');
+    setUpdateTodoId('');
+    setTodoFormOpen((prev) => !prev);
   };
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-  };
-  const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(event.target.value);
-  };
-
-  const onOpenTodoFormClick = () => {
-    setIsAdding((prev) => !prev);
+  const handleUpdateTodoClick = (id: string) => {
+    setUpdateTodoId(id);
+    setTodoFormType('update');
+    setTodoFormOpen(true);
   };
 
-  const onTodoUpdateClick = (event: React.MouseEvent<SVGSVGElement>, todo: TodoType) => {
-    event.stopPropagation();
-    setIsUpdating(true);
-    setIsAdding(true);
-    setUpdateTodoId(todo.id);
-    setTitle(todo.title);
-    setContent(todo.content);
+  const handleCancelClick = () => {
+    setUpdateTodoId('');
+    setTodoFormOpen(false);
   };
 
-  const onCancelClick = () => {
-    setIsUpdating(false);
-    setIsAdding(false);
-    setTitle('');
-    setContent('');
+  const handleTodoFormSubmit = ({ title, content }: TodoFormType) => {
+    if (todoFormType === 'create') {
+      CreateTodoMutate({ title, content });
+      setTodoFormOpen(false);
+      return;
+    }
+
+    UpdateTodoMutate({ id: updateTodoId, title, content });
+    setTodoFormOpen(false);
   };
 
   return (
     <S.Todos>
       <S.TodoList>
         {todos?.data.map((todo: TodoType) => (
-          <TodoBox
-            key={todo.id}
-            todo={todo}
-            onTodoUpdateClick={(event) => onTodoUpdateClick(event, todo)}
-          />
+          <TodoBox key={todo.id} todo={todo} onUpdateTodoClick={handleUpdateTodoClick} />
         ))}
       </S.TodoList>
-      <S.TodoAddButton isAdding={isAdding} onClick={onOpenTodoFormClick}>
+      <S.CreateTodoButton isCreateFormOpen={isTodoFormOpen} onClick={handleCreateTodoClick}>
         <PlusIcon />
-      </S.TodoAddButton>
-      <S.TodoForm isOpen={isAdding} onSubmit={handleSubmit}>
-        <S.TodoFormTitle>{isUpdating ? '할 일 수정' : '할 일 추가'}</S.TodoFormTitle>
-        <Input
-          name="title"
-          value={title}
-          placeholder="제목을 입력하세요."
-          onChange={handleTitleChange}
+      </S.CreateTodoButton>
+      <S.TodoFormContainer isTodoFormOpen={isTodoFormOpen}>
+        <TodoForm
+          type={todoFormType}
+          onSubmit={handleTodoFormSubmit}
+          onCancelClick={handleCancelClick}
+          todo={todos?.data.find((todo: TodoType) => todo.id === updateTodoId)}
         />
-        <S.TodoFormTextarea
-          name="content"
-          value={content}
-          placeholder="내용을 입력하세요."
-          onChange={handleContentChange}
-        />
-        <Button type="submit">{isUpdating ? '수정' : '추가'}</Button>
-        <Button type="button" onClick={onCancelClick}>
-          취소
-        </Button>
-      </S.TodoForm>
+      </S.TodoFormContainer>
     </S.Todos>
   );
 }
