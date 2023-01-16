@@ -3,7 +3,7 @@ import ROUTES from '@/constants/routes';
 import { getToken } from '@/utils/storage';
 
 const ProtectedRoute = () => {
-  if (!getToken()) return <Navigate to={ROUTES.AUTH} />;
+  if (!getToken()) return <Navigate to={ROUTES.LOGIN} />;
 
   return <Outlet />;
 };

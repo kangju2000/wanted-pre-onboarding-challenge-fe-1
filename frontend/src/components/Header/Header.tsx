@@ -22,7 +22,7 @@ const Header = () => {
       return;
     }
 
-    navigate(ROUTES.AUTH);
+    navigate(ROUTES.LOGIN);
   };
 
   return (

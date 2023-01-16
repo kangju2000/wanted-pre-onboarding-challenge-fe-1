@@ -3,13 +3,13 @@ import { useQueryClient } from 'react-query';
 import { Route, Routes } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from '@/components/Layout/Layout';
-import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
-import { MUTATION_KEYS } from '@/constants/queries';
 import ROUTES from '@/constants/routes';
-import Auth from '@/pages/Auth/Auth';
+import useSnackBar from '@/hooks/useSnackBar';
+import Login from '@/pages/Auth/Login/Login';
+import SignUp from '@/pages/Auth/SignUp/SignUp';
 import Home from '@/pages/Home/Home';
 import Todos from '@/pages/Todos/Todos';
-import useSnackBar from './hooks/useSnackBar';
+import ProtectedRoute from '@/routes/ProtectedRoute';
 
 function App() {
   const { showSnackBar } = useSnackBar();
@@ -37,7 +37,8 @@ function App() {
       <Layout>
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path={ROUTES.AUTH} element={<Auth />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
+          <Route path={ROUTES.SIGNUP} element={<SignUp />} />
           <Route element={<ProtectedRoute />}>
             <Route path={ROUTES.TODOS} element={<Todos />} />
           </Route>
