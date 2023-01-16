@@ -1,15 +1,15 @@
 import { ReactComponent as CloseIcon } from '@/assets/close.svg';
 import { TodoType } from '@/types/todos';
 import Modal from '../Common/Modal/Modal';
-import * as S from './TodoModal.styles';
+import * as S from './TodoDetailModal.styles';
 
-export interface TodoModalProps {
+export interface TodoDetailModalProps {
   todo: TodoType;
   isOpen: boolean;
   handleClose: () => void;
 }
 
-const TodoModal = ({ todo, isOpen, handleClose }: TodoModalProps) => {
+const TodoDetailModal = ({ todo, isOpen, handleClose }: TodoDetailModalProps) => {
   return (
     <Modal isOpen={isOpen} handleClose={handleClose}>
       <S.ModalContainer>
@@ -26,4 +26,4 @@ const TodoModal = ({ todo, isOpen, handleClose }: TodoModalProps) => {
   );
 };
 
-export default TodoModal;
+export default TodoDetailModal;

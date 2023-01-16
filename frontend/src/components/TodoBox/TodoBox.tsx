@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ReactComponent as CheckIcon } from '@/assets/check.svg';
 import { ReactComponent as DeleteIcon } from '@/assets/delete.svg';
 import { ReactComponent as UpdateIcon } from '@/assets/pen.svg';
-import TodoModal from '@/components/TodoModal/TodoModal';
+import TodoDetailModal from '@/components/TodoDetailModal/TodoDetailModal';
 import { useUpdateTodo } from '@/hooks/queries/todos';
 import { useDeleteTodo } from '@/hooks/queries/todos';
 import { TodoType } from '@/types/todos';
@@ -40,7 +40,7 @@ const TodoBox = ({ todo, onUpdateTodoClick }: TodoBoxProps) => {
 
   return (
     <>
-      <TodoModal isOpen={isModalOpen} handleClose={toggleModal} todo={todo} />
+      <TodoDetailModal isOpen={isModalOpen} handleClose={toggleModal} todo={todo} />
       <S.TodoBox onClick={toggleModal}>
         <CheckIcon onClick={() => onTodoClick(todo)} />
         <S.TodoTitle>{todo.title}</S.TodoTitle>

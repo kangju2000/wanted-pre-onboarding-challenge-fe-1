@@ -1,6 +1,6 @@
+import api from '@/api';
 import API_PATH from '@/constants/path';
-import { TodoType } from '@/types/todos';
-import api from './';
+import { CreateTodoType, UpdateTodoType } from '@/types/todos';
 
 export const getTodos = async () => {
   const { data } = await api.get(API_PATH.TODOS);
@@ -14,17 +14,13 @@ export const getTodoById = async (id: string) => {
   return data;
 };
 
-export const postCreateToDo = async (params: Pick<TodoType, 'title' | 'content'>) => {
+export const postCreateToDo = async (params: CreateTodoType) => {
   const { data } = await api.post(API_PATH.CREATE_TODO, params);
 
   return data;
 };
 
-export const putUpdateToDo = async ({
-  id,
-  title,
-  content,
-}: Pick<TodoType, 'id' | 'title' | 'content'>) => {
+export const putUpdateToDo = async ({ id, title, content }: UpdateTodoType) => {
   const { data } = await api.put(API_PATH.UPDATE_TODO(id), { title, content });
 
   return data;

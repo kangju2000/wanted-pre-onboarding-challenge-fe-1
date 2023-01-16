@@ -1,6 +1,6 @@
+import api from '@/api';
 import API_PATH from '@/constants/path';
 import { AuthType } from '@/types/auth';
-import api from './';
 
 export const postLogin = async (params: AuthType) => {
   const { data } = await api.post(API_PATH.LOGIN, params);
