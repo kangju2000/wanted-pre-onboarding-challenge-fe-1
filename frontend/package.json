@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
+    "setting": "yarn && cd ../backend && yarn",
     "dev": "concurrently \"cd ../backend && yarn start\"  \"vite\"",
     "build": "tsc && vite build",
     "preview": "vite preview",
