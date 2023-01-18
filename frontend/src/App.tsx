@@ -10,6 +10,7 @@ import SignUp from '@/pages/Auth/SignUp/SignUp';
 import Home from '@/pages/Home/Home';
 import Todos from '@/pages/Todos/Todos';
 import ProtectedRoute from '@/routes/ProtectedRoute';
+import PublicRoute from '@/routes/PublicRoute';
 
 function App() {
   const { showSnackBar } = useSnackBar();
@@ -37,8 +38,10 @@ function App() {
       <Layout>
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path={ROUTES.LOGIN} element={<Login />} />
-          <Route path={ROUTES.SIGNUP} element={<SignUp />} />
+          <Route element={<PublicRoute />}>
+            <Route path={ROUTES.LOGIN} element={<Login />} />
+            <Route path={ROUTES.SIGNUP} element={<SignUp />} />
+          </Route>
           <Route element={<ProtectedRoute />}>
             <Route path={ROUTES.TODOS} element={<Todos />} />
           </Route>
