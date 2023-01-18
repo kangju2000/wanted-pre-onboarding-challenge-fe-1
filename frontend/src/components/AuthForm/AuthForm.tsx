@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '@/components/Common/Button/Button';
 import Input from '@/components/Common/Input/Input';
 import REGEX from '@/constants/regex';
-import { AuthType } from '@/types/auth';
+import type { AuthType } from '@/types/auth';
 import * as S from './AuthForm.styles';
 
 export interface AuthFormProps {

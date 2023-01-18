@@ -1,6 +1,6 @@
 import AuthForm from '@/components/AuthForm/AuthForm';
 import { useSignUp } from '@/hooks/queries/auth';
-import { AuthType } from '@/types/auth';
+import type { AuthType } from '@/types/auth';
 import * as S from './SignUp.styles';
 
 function SignUp() {

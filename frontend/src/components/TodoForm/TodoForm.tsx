@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Button from '@/components/Common/Button/Button';
 import Input from '@/components/Common/Input/Input';
-import { TodoFormType, TodoType } from '@/types/todos';
+import type { TodoFormType, TodoType } from '@/types/todos';
 import * as S from './TodoForm.styles';
 
 export interface TodoFormProps {

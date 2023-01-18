@@ -3,7 +3,7 @@ import AuthForm from '@/components/AuthForm/AuthForm';
 import Button from '@/components/Common/Button/Button';
 import ROUTES from '@/constants/routes';
 import { useLogin } from '@/hooks/queries/auth';
-import { AuthType } from '@/types/auth';
+import type { AuthType } from '@/types/auth';
 import * as S from './Login.styles';
 
 function Login() {

@@ -1,6 +1,6 @@
 import api from '@/api';
 import API_PATH from '@/constants/path';
-import { CreateTodoType, UpdateTodoType } from '@/types/todos';
+import type { CreateTodoType, UpdateTodoType } from '@/types/todos';
 
 export const getTodos = async () => {
   const { data } = await api.get(API_PATH.TODOS);

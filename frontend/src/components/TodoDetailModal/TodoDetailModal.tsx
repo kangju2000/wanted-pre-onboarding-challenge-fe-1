@@ -1,5 +1,5 @@
 import { ReactComponent as CloseIcon } from '@/assets/close.svg';
-import { TodoType } from '@/types/todos';
+import type { TodoType } from '@/types/todos';
 import Modal from '../Common/Modal/Modal';
 import * as S from './TodoDetailModal.styles';
 

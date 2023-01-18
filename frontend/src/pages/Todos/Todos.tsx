@@ -3,8 +3,8 @@ import { ReactComponent as PlusIcon } from '@/assets/plus.svg';
 import TodoBox from '@/components/TodoBox/TodoBox';
 import TodoForm from '@/components/TodoForm/TodoForm';
 import { useCreateTodo, useGetTodos, useUpdateTodo } from '@/hooks/queries/todos';
-import { TodoFormType } from '@/types/todos';
-import { TodoType } from '@/types/todos';
+import type { TodoFormType } from '@/types/todos';
+import type { TodoType } from '@/types/todos';
 import * as S from './Todos.styles';
 
 function Todos() {

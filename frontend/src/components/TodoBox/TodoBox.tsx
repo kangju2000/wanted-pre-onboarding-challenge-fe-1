@@ -5,7 +5,7 @@ import { ReactComponent as UpdateIcon } from '@/assets/pen.svg';
 import TodoDetailModal from '@/components/TodoDetailModal/TodoDetailModal';
 import { useUpdateTodo } from '@/hooks/queries/todos';
 import { useDeleteTodo } from '@/hooks/queries/todos';
-import { TodoType } from '@/types/todos';
+import type { TodoType } from '@/types/todos';
 import * as S from './TodoBox.styles';
 
 export interface TodoBoxProps {
