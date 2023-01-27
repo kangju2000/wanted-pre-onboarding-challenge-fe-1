@@ -18,7 +18,7 @@ function App() {
 
   const onError = (error: unknown) => {
     error instanceof AxiosError
-      ? showSnackBar(error.response?.data.details)
+      ? showSnackBar(error.response?.data.details ?? '알 수 없는 에러가 발생했습니다.')
       : showSnackBar('알 수 없는 에러가 발생했습니다.');
   };
 
